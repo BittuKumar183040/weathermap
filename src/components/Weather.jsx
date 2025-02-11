@@ -22,8 +22,9 @@ const Weather = ({ location }) => {
   }
 
   useEffect(() => {
-    apiCall()
-  }, [location])
+    location && apiCall();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
 
   const formatTime = (timestamp) => {
     const date = new Date(timestamp * 1000);
