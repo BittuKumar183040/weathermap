@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { Marker, useMapEvents, Tooltip } from 'react-leaflet';
-import { defautPos } from '../config/config';
 import Weather from './Weather';
 
 const LocationMarker = () => {
-  const [position, setPosition] = useState(defautPos);
+  const [position, setPosition] = useState(null);
 
   useMapEvents({
     click(e) {
@@ -12,12 +11,17 @@ const LocationMarker = () => {
     }
   });
 
-  return (
-    <Marker position={position}>
-      <Tooltip permanent >
-        <Weather location={position} />
-      </Tooltip>
-    </Marker>
+  return (<>
+    {
+      position && (
+        <Marker position={position}>
+          <Tooltip permanent >
+            <Weather location={position} />
+          </Tooltip>
+        </Marker>
+      )
+    }
+  </>
   )
 }
 export default LocationMarker

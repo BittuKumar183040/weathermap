@@ -1,1 +1,0 @@
-export const defautPos = [24.1667, 85.5567];
